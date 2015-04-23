@@ -1,3 +1,5 @@
+// Brandon Saunders
+// April 21st, 2015
 // Javascript program that calculates the first 100 prime numbers.
 // Definition: A prime number (or a prime) is a natural number greater than 1 that has no positive 
 // divisors other than 1 and itself.

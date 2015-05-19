@@ -36,5 +36,7 @@ function listener ()
 
 function resetimage(image) 
 {
-	image.reset(xPos,yPos);
+	image.x = image.height;
+	image.y = image.width;
+	image.reset(image.y,image.x);
 }

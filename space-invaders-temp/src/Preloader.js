@@ -21,13 +21,14 @@ BasicGame.Preloader.prototype =
     this.load.atlasJSONHash('start','assets/ui/start.png','assets/ui/start.json');
     this.load.atlasJSONHash('fullscreen','assets/ui/fullscreen.png','assets/ui/fullscreen.json');
     this.load.image('logo', 'assets/logo.png');
-    this.load.spritesheet('duke', 'assets/spritesheet-duke.png', 50, 72);
     this.load.image('bullet', 'assets/games/invaders/bullet.png');
     this.load.image('enemyBullet', 'assets/games/invaders/enemy-bullet.png');
     this.load.spritesheet('invader', 'assets/games/invaders/invader32x32x4.png', 32, 32);
     this.load.image('ship', 'assets/games/invaders/player.png');
     this.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
     this.load.image('starfield', 'assets/games/invaders/starfield.png');
+    this.load.image('enemyBullet', 'assets/games/invaders/enemy-bullet.png');
+
   },
 
   create: function () 

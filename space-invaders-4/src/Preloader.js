@@ -25,10 +25,12 @@
 			this.load.image('enemyBullet', 'assets/games/invaders/enemy-bullet.png');
 			this.load.image('left', 'assets/ui/left.png');
 			this.load.image('right', 'assets/ui/right.png');
+			this.load.image('fireClick', 'assets/ui/firebutton.png');
 		},
 
 		create: function () 
 		{
+
 			this.preloadBar.cropEnabled = false;
 			var playnow =
 				this.add.button(this.game.width/2,this.game.height/2 + this.preloadBar.height*4,'playnow',function() 

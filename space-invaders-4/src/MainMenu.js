@@ -19,6 +19,9 @@
 			var fullscreen =
 			this.add.button(this.game.width-8, this.game.height-8,'fullscreen',BasicGame.toggleFullscreen,this,'over', 'up', 'down');
 			fullscreen.pivot.x = fullscreen.width;
-			fullscreen.pivot.y = fullscreen.height;
+			fullscreen.pivot.y = fullscreen.height;	
+
+			this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+
 		},
 	};

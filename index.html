@@ -1,67 +1,49 @@
+<!DOCTYPE HTML>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Experiments</title>
+	<meta charset="utf-8">
+	<title>Space Invaders by Brandon Saunders</title>
+	<meta name="apple-mobile-web-app-title" content="Fullscreen">
+	<meta name="viewport" content="initial-scale=1 maximum-scale=1 user-scalable=0 minimal-ui" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1, IE=9">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="robots" content="noindex,nofollow" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="apple-touch-icon" href="assets/ui/icons/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="57x57" href="assets/ui/icons/app_icon_57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="assets/ui/icons/app_icon_60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/ui/icons/app_icon_72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/ui/icons/app_icon_76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/ui/icons/app_icon_114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="assets/ui/icons/app_icon_120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="assets/ui/icons/app_icon_144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/ui/icons/app_icon_152x152.png">
+	<link rel="apple-touch-icon" sizes="256x256" href="assets/ui/icons/app_icon_256x256.png">
+	<link rel="apple-touch-icon" sizes="512x512" href="assets/ui/icons/app_icon_512x512.png">
+	<link rel="apple-touch-icon" sizes="1024x1024" href="assets/ui/icons/app_icon_1024x1024.png">
+	<script src="../phaser.js"></script>
+	<script src="http://cdn.jsdelivr.net/phaser/2.3.0/phaser.min.js"></script>
+	<link rel="stylesheet" href="css/stylesheet.css" type="text/css" charset="utf-8" />
+	<script src="src/Boot.js"></script>
+	<script src="src/Preloader.js"></script>
+	<script src="src/MainMenu.js"></script>
+	<script src="src/Game.js"></script>
 </head>
 <body>
-
-<ul>
-<li><a href="load-an-image/">Load an image</a></li>
-</ul>
-
-<ul>
-<li><a href="click-on-image/">Click on an image</a></li>
-</ul>
-
-<ul>
-<li><a href="move-an-image/">Move an image</a></li>
-</ul>
-
-<ul>
-<li><a href="image-follow-input/">Image follow input</a></li>
-</ul>
-
-
-<ul>
-<li><a href="tween-an-image/">Tween an image</a></li>
-</ul>
-
-
-<ul>
-<li><a href="animation-events/">Animation Events</a></li>
-</ul>
-
-
-<ul>
-<li><a href="space-invaders-1/">Space Invaders 1</a></li>
-</ul>
-
-
-<ul>
-<li><a href="space-invaders-2/">Space Invaders 2</a></li>
-</ul>
-
-<ul>
-<li><a href="space-invaders-3/">Space Invaders 3</a></li>
-</ul>
-
-<ul>
-<li><a href="space-invaders-4/">Space Invaders 4</a></li>
-</ul>
-
-
-<ul>
-<li><a href="space-invaders-5/">Space Invaders 5</a></li>
-</ul>
-
-<ul>
-<li><a href="space-invaders-6/">Space Invaders 6</a></li>
-</ul>
-
-
-<ul>
-<li><a href="space-invaders-7/">Space Invaders 7</a></li>
-</ul>
-
+<div id="game"><div id="orientation"></div> 
+</div>
+<script type="text/javascript">
+(function () 
+{
+	var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game');
+	game.state.add('Boot', BasicGame.Boot);
+	game.state.add('Preloader', BasicGame.Preloader);
+	game.state.add('MainMenu', BasicGame.MainMenu);
+	game.state.add('Game', BasicGame.Game);
+	game.state.start('Boot');
+})();
+</script>
 </body>
 </html>

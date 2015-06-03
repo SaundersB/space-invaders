@@ -29,8 +29,8 @@
 			this.stage.disableVisibilityChange = true;
 			this.stage.backgroundColor = '#000000';
 
-			this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-			this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+			//this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+			//this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 
 			this.scale.minWidth = this.game.width / 2;
 			this.scale.minHeight = this.game.height / 2;
@@ -40,9 +40,12 @@
 
 			if (this.game.device.desktop) 
 			{
+				this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT; 
+
 			} 
 			else 
-			{            
+			{
+				this.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;  
 				this.scale.forceOrientation(true, false);
 				this.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
 				this.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);

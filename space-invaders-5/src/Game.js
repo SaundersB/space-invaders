@@ -54,15 +54,17 @@ BasicGame.Game.prototype =
 		}
 		this.explosions = this.add.group();
 		this.explosions.createMultiple(30, 'kaboom');
+		this.fireButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		this.explosions.forEach(this.setupInvader, this);
 		this.cursors = this.input.keyboard.createCursorKeys();
 		this.fireButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+		
 		var fullscreen = this.add.button(this.game.width-8, this.game.height-8,'fullscreen',BasicGame.toggleFullscreen,this,'over', 'up', 'down');
 		fullscreen.pivot.x = fullscreen.width;
 		fullscreen.pivot.y = fullscreen.height;
 
-		this.leftButton = this.add.button(this.world.centerX - 200, this.world.centerY + 290,'left', null, this);
+		this.leftButton = this.add.button(this.world.centerX - 200, this.world.centerY + 290,'left', null, this, 2, 1);
 		this.leftButton.pivot.x = this.leftButton.width;
 		this.leftButton.pivot.y = this.leftButton.height;
 
@@ -70,12 +72,9 @@ BasicGame.Game.prototype =
 		this.rightButton.pivot.x = this.rightButton.width;
 		this.rightButton.pivot.y = this.rightButton.height;
 
-		this.decision = false;
-		this.leftButton.events.onInputDown.add(function(){this.decision=true;});
-		this.rightButton.events.onInputDown.add(function(){this.decision=true;});
-
-		this.leftButton.inputEnabled = true;
-		this.rightButton.inputEnabled = true;
+		this.fireClick = this.add.button(this.world.centerX, this.world.centerY + 290, 'fireClick', null, this, 2, 1);
+		this.fireClick.pivot.x = this.fireClick.width;
+		this.fireClick.pivot.y = this.fireClick.height;
 	},
 
 	update: function () 
@@ -86,15 +85,15 @@ BasicGame.Game.prototype =
 		{
 			this.player.body.velocity.setTo(0, 0);
 		  
-			if (this.cursors.left.isDown || this.decision)
+			if (this.cursors.left.isDown || this.leftButton.input.pointerDown(1) || this.leftButton.input.pointerDown())
 			{
 				this.player.body.velocity.x = -200;
 			}
-			else if (this.cursors.right.isDown)
+			else if (this.cursors.right.isDown || this.rightButton.input.pointerDown(1) || this.rightButton.input.pointerDown())
 			{
 				this.player.body.velocity.x = 200;
 			}
-			if (this.fireButton.isDown)
+			if (this.fireButton.isDown || this.fireClick.input.pointerDown(1) || this.fireClick.input.pointerDown())
 			{
 				this.fireBullet();
 			}
@@ -122,6 +121,7 @@ BasicGame.Game.prototype =
 	{
 		this.player.kill();
 		this.live = this.lives.getFirstAlive();
+		this.explosionaudio.play();
 
 		if (this.live)
 		{ 

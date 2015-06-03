@@ -1,0 +1,21 @@
+{"frames": [
+
+{
+	"filename": "healthbar.png",
+	"frame": {"x":2,"y":2,"w":156,"h":273},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":1,"w":156,"h":273},
+	"sourceSize": {"w":162,"h":275},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "healthbar.png",
+	"format": "RGBA8888",
+	"size": {"w":160,"h":277},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:baa008f09bf4406c1507aeda545071b4:95ec7175cefd30285080f1566141bc7c:ea6f465831e31bd936c973183f85411d$"
+}
+}

@@ -18,28 +18,28 @@
 			this.load.image('logo', 'assets/logo.png');
 			this.load.image('bullet', 'assets/games/invaders/bullet.png');
 			this.load.image('enemyBullet', 'assets/games/invaders/enemy-bullet.png');
+			this.load.image('enemyBulletSpecial', 'assets/games/invaders/enemy-bullet-special.png');
 			this.load.spritesheet('invader', 'assets/games/invaders/invader32x32x4.png', 32, 32);
 			this.load.image('ship', 'assets/games/invaders/player.png');
 			this.load.spritesheet('kaboom', 'assets/games/invaders/explode.png', 128, 128);
 			this.load.image('starfield', 'assets/games/invaders/starfield.png');
 			this.load.image('enemyBullet', 'assets/games/invaders/enemy-bullet.png');
-			this.load.image('left', 'assets/ui/left.png');
-			this.load.image('right', 'assets/ui/right.png');
-			this.load.image('fireClick', 'assets/ui/firebutton.png');
 			this.load.audio('laser','assets/audio/laser.wav');
 			this.load.audio('explosionaudio','assets/audio/explosion.wav');
+			this.load.image('playerHit', 'assets/games/invaders/playerHit.png');
+
 		},
 
 		create: function () 
 		{
 			this.preloadBar.cropEnabled = false;
 			var playnow =
-				this.add.button(this.game.width/2,this.game.height/2 + this.preloadBar.height*4,'playnow',function() 
+				this.add.button(this.game.width/2,this.game.height/2 + this.preloadBar.height*9,'playnow',function() 
 					{this.state.start('MainMenu');},this,'over', 'up', 'down');
 			playnow.pivot.x = playnow.width * .5;
 			playnow.pivot.y = playnow.height * .5;
 			var fullscreen =
-				this.add.button(this.game.width-8, this.game.height-8,'fullscreen',BasicGame.toggleFullscreen,this,'over', 'up', 'down');
+				this.add.button(this.game.width-25, this.game.height-25,'fullscreen',BasicGame.toggleFullscreen,this,'over', 'up', 'down');
 			fullscreen.pivot.x = fullscreen.width;
 			fullscreen.pivot.y = fullscreen.height;
 		},

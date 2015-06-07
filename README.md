@@ -1,3 +1,6 @@
-### Space Invaders
-#	Welcome to Space Invaders! Where you must thwart invading aliens! You have health and lives. Be careful the aliens have advanced weaponry that you must avoid! Progress through each level as it becomes more and more difficult to prevail!
+Run the following commands once to set your name and email.
+(Use your real name so I can recognize you more easily.)
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
 

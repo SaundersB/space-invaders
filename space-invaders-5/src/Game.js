@@ -10,6 +10,8 @@ BasicGame.Game.prototype =
 		this.bulletTime = 0;
 		this.score = 0;
 		this.livingEnemies = [];
+		this.laser = this.add.audio('laser');
+		this.explosionaudio = this.add.audio('explosionaudio');
 		this.physics.startSystem(Phaser.Physics.ARCADE);
 		this.starfield = this.add.tileSprite(0, 0, 800, 600, 'starfield');
 		this.bullets = this.add.group();
@@ -52,11 +54,12 @@ BasicGame.Game.prototype =
 		}
 		this.explosions = this.add.group();
 		this.explosions.createMultiple(30, 'kaboom');
+		this.fireButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		this.explosions.forEach(this.setupInvader, this);
 		this.cursors = this.input.keyboard.createCursorKeys();
 		this.fireButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 		this.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-
+		
 		var fullscreen = this.add.button(this.game.width-8, this.game.height-8,'fullscreen',BasicGame.toggleFullscreen,this,'over', 'up', 'down');
 		fullscreen.pivot.x = fullscreen.width;
 		fullscreen.pivot.y = fullscreen.height;
@@ -72,12 +75,12 @@ BasicGame.Game.prototype =
 		this.fireClick = this.add.button(this.world.centerX, this.world.centerY + 290, 'fireClick', null, this, 2, 1);
 		this.fireClick.pivot.x = this.fireClick.width;
 		this.fireClick.pivot.y = this.fireClick.height;
-
 	},
 
 	update: function () 
 	{
-		this.starfield.tilePosition.y += 2;
+	this.starfield.tilePosition.y += 2;
+
 		if(this.player.alive)
 		{
 			this.player.body.velocity.setTo(0, 0);
@@ -92,22 +95,17 @@ BasicGame.Game.prototype =
 			}
 			if (this.fireButton.isDown || this.fireClick.input.pointerDown(1) || this.fireClick.input.pointerDown())
 			{
-				this.fireBullet();	
+				this.fireBullet();
 			}
 			if (this.time.now > this.firingTimer)
 			{
 				this.enemyFires();
 			}
+			
 			this.physics.arcade.overlap(this.bullets, this.aliens, this.collisionHandler, null, this);
 			this.physics.arcade.overlap(this.enemyBullets, this.player, this.enemyHitsPlayer, null, this);
 			this.physics.arcade.overlap(this.player, this.aliens, this.playerCollision, null, this);
 		}
-	},
-
-
-	playerMoves: function()
-	{
-		this.player.body.velocity.x = -200;
 	},
 
 	restart: function () 
@@ -123,6 +121,7 @@ BasicGame.Game.prototype =
 	{
 		this.player.kill();
 		this.live = this.lives.getFirstAlive();
+		this.explosionaudio.play();
 
 		if (this.live)
 		{ 
@@ -175,6 +174,7 @@ BasicGame.Game.prototype =
 		this.explosion = this.explosions.getFirstExists(false);
 		this.explosion.reset(alien.body.x, alien.body.y);
 		this.explosion.play('kaboom', 30, false, true);
+		this.explosionaudio.play();
 
 		if (this.aliens.countLiving() == 0)
 		{
@@ -195,6 +195,7 @@ BasicGame.Game.prototype =
 
 			if (this.bullet)
 			{
+				this.laser.play();
 				this.bullet.reset(this.player.x, this.player.y + 8);
 				this.bullet.body.velocity.y = -400;
 				this.bulletTime = this.time.now + 200;
@@ -211,7 +212,18 @@ BasicGame.Game.prototype =
 		this.stateText.visible = false;
 	},
 
-	
+	gofull: function() 
+	{
+		if (this.scale.isFullScreen)
+		{
+			this.scale.stopFullScreen();
+		}
+
+		else
+		{
+			this.scale.startFullScreen(false);
+		}
+	},
 
 
 	resetBullet: function(bullet) 
@@ -262,6 +274,7 @@ BasicGame.Game.prototype =
 		var explosion = this.explosions.getFirstExists(false);
 		explosion.reset(player.body.x, player.body.y);
 		explosion.play('kaboom', 30, false, true);
+		this.explosionaudio.play();
 
 		if (this.lives.countLiving() < 1)
 		{

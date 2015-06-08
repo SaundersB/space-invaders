@@ -32,7 +32,8 @@
 
 			if (this.game.device.desktop) 
 			{
-				this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+				this.scale.pageAlignVertically = true;
+    			this.scale.pageAlignHorizontally = true;
 				this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 			} 
 			else 
@@ -62,7 +63,8 @@
 		enterIncorrectOrientation: function() 
 		{
 			BasicGame.orientated = false;
-			document.getElementById('orientation').style.display = 'block';			
+			document.getElementById('orientation').style.display = 'block';
+			
 		},
 
 		leaveIncorrectOrientation: function() 

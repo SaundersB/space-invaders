@@ -34,7 +34,7 @@
 		{
 			this.preloadBar.cropEnabled = false;
 			var playnow =
-				this.add.button(this.game.width/2,this.game.height/2 + this.preloadBar.height*9,'playnow',function() 
+				this.add.button(this.game.width/2,this.game.height/2.9 + this.preloadBar.height*9,'playnow',function() 
 					{this.state.start('MainMenu');},this,'over', 'up', 'down');
 			playnow.pivot.x = playnow.width * .5;
 			playnow.pivot.y = playnow.height * .5;
